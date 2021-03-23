@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch_lamp</title>
+</head>
+<body>
+<script>
+    class SwitchButton {
+        constructor() {
+            this.status = false;
+            this.lamp = ElectricLamp;
+        }
+
+        switchButton() {
+            if (this.status) {
+                this.status = false;
+            } else this.status = true;
+        }
+        switchOff(){
+            this.status = false;
+            this.lamp.turnOff();
+        }
+        switchOn(){
+            this.status = true;
+            this.lamp.turnOn();
+        }
+        conectToLamp(lamp){
+            this.lamp = lamp;
+        }
+
+    }
+    class ElectricLamp{
+        constructor() {
+            this.status = false;
+        }
+
+        checkLightning(){
+            if(this.status == true){
+                alert("Lamp is lightning")
+            }
+        }
+        turnOn(){
+            return this.status = true;
+        }
+        turnOff(){
+            return this.status = false;
+        }
+    }
+    let switchButton = new SwitchButton();
+    let electricLamp = new ElectricLamp();
+    switchButton.conectToLamp(electricLamp);
+    switchButton.switchOn();
+    console.log(switchButton.status)
+    electricLamp.checkLightning();
+    switchButton.switchOff();
+
+</script>
+</body>
+</html>
